@@ -1,2 +1,3 @@
-# Kawaii
-A *kawaii* C dialect.
+# Kawaii C
+
+The cutest C dialect!
