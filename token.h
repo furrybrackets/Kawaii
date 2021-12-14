@@ -6,14 +6,13 @@ enum Tokens {
     // Special Characters in C
     Comma, LessThan, GreaterThan, Period, Underscore,
     LeftParen, RightParen, SemiColon, Dollar,
-    Colon, Percent, LeftBracket, RightBracket,
+    Colon, Modulo, LeftBracket, RightBracket,
     Hashtag,
-    QuestionMark, SingleQuote, Ampersand, LeftCurlyBracket,
-    RightCurlyBracket, DoubleQuote, ExponentiationMark,
-    Bang, Star, Slash, UpwardsLine, Minus, Backslash,
-    SquigglyLine, Plus,
+    QuestionMark, SingleQuote, LeftCurlyBracket,
+    RightCurlyBracket, DoubleQuote,
+    Bang, Star, Slash, Minus, EscapeSlash, Plus,
     // Not C-standard special character, but a special character in Kawaii C nonetheless
-    Equals,
+    Equal,
 
     // Types (LLVM-IR style)
     
@@ -41,7 +40,6 @@ enum Tokens {
    Continue, For, Do,
    If, Static, While,
    Default, Sizeof, Const,
-   Inline,
 
    // Preprocessor
    Include, Define, Undef, Ifdef, Ifndef, IfPre, ElsePre, Elif, Endif, ErrorPre,
@@ -49,7 +47,19 @@ enum Tokens {
    // Std management
    Assemby,
 
-   Newline, Endl,
+   Newline, Endl, Error,
+
+   // Literals
+   CharLiteral, IntLiteral, FloatLiteral, StringLiteral
+
+   // Operators
+   LogicalOr, LogicalAnd, LogicalNot, EqualEqual,
+   NotEqual, GreaterThanOrEqualTo,
+   LessThanOrEqualTo, 
+   BitwiseAnd, BitwiseOr, BitwiseExclusiveOr,
+   BitwiseComplement,
+   ShiftLeft, ShiftRight,
+   LogicalXor,
 }
 
 
