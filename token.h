@@ -1,6 +1,13 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
+#ifndef END
+    #define END '\0'
+#endif
+
+#include <stdio.h>
+#include <string.h>
+
 // > is it bad that I'm a femboy?! *uwu*
 typedef enum Tokens {
     // Special Characters in C
@@ -63,8 +70,8 @@ typedef enum Tokens {
 } TokType;
 
 typedef struct {
-    char *start;
-    char *current;
+    const char *start;
+    const char *current;
     int line;
 } Scanner;
 
@@ -152,5 +159,9 @@ static char peek();
 static char peekNext(const int howMany);
 
 
+// Pass function, will be called by the `compile` function during compile time.
+Tok* scanDoc(const char *src);
+
+int getTokPre(Tok token);
 
 #endif
