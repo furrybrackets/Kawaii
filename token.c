@@ -36,12 +36,18 @@ static int isDigit(char c) {
     return (c >= '0' && c <= '9');
 };
 
+static char advance() {
+    scanner.current++;
+    return scanner.current[-1];
+};
+
 int getTokPre(Tok token) {
     char buf[5];
     int i = 0;
     while (isDigit(peek())) {
         if (i > 4) {
-            genErrorTok("Types can only have max integer component of 4.");
+            // Compiler will catch if precision is -1 and throw error.
+            return -1;
         }
         buf[i] = peek();
         advance();
@@ -71,4 +77,20 @@ Tok scanToken() {
     }
 
     return genErrorTok("Unexpected character.");
+};
+
+void scanDoc(const char *src) {
+    initScanner(src);
+    int line = -1;
+
+    while (1) {
+        Tok token = scanToken();
+        if (token.line != line) {
+            printf("%4d", token.line);
+            line = token.line;
+        } else {
+            printf("    | ");
+        }
+        printf("%2d '%.*s'\n", token.type, token.length, token.start);
+    };
 };

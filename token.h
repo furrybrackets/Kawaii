@@ -160,8 +160,11 @@ static char peekNext(const int howMany);
 
 
 // Pass function, will be called by the `compile` function during compile time.
-Tok* scanDoc(const char *src);
+void scanDoc(const char *src);
 
 int getTokPre(Tok token);
+
+
+static int isDigit(char c);
 
 #endif
